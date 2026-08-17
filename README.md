@@ -1,3 +1,5 @@
+![Banner del proyecto](assets/banner.jpg)
+
 # PromptMaster
 
 > Biblioteca interactiva de prompts parametrizados para crear, personalizar, evaluar y reutilizar instrucciones eficaces para modelos de inteligencia artificial.
