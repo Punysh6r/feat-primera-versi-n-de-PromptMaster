@@ -85,15 +85,6 @@ prompt-master/
 └── styles.css
 ```
 
-## Publicación en GitHub Pages
-
-1. Abre **Settings** en el repositorio.
-2. Entra en **Pages**.
-3. Selecciona **Deploy from a branch**.
-4. Elige la rama `main` y la carpeta `/root`.
-5. Pulsa **Save**.
-
-
 ## Contribuir
 
 Las contribuciones son bienvenidas. Para añadir o mejorar un prompt, crea una rama descriptiva, documenta el caso de uso, define las variables y el formato de salida, comprueba la aplicación y abre un Pull Request.
