@@ -1,49 +1,121 @@
 # PromptMaster
 
-Biblioteca interactiva de prompts parametrizados para crear, adaptar y evaluar instrucciones para modelos de IA.
+> Biblioteca interactiva de prompts parametrizados para crear, personalizar, evaluar y reutilizar instrucciones eficaces para modelos de inteligencia artificial.
 
-## Qué incluye
+PromptMaster transforma una colección de prompts reutilizables en una herramienta práctica para el trabajo diario. Permite localizar plantillas por categoría, completar variables dinámicamente y generar instrucciones listas para copiar y utilizar.
 
-- 16 prompts organizados en comunicación, análisis, estudio, creación, datos y sistema.
-- Búsqueda por nombre, categoría, modelo, variables y contenido.
-- Formulario para completar variables y generar una versión lista para copiar.
-- Evaluador R-C-T-F-R-E para revisar Rol, Contexto, Tarea, Formato, Restricciones y Ejemplos.
-- Exportación de la biblioteca a CSV.
-- Documentación completa en Markdown y datos reutilizables en CSV.
+Está pensado para profesionales, estudiantes, creadores de contenido y equipos que quieran utilizar la inteligencia artificial de forma más estructurada, clara y consistente. Funciona completamente en el navegador, sin backend ni instalación de dependencias, y puede publicarse mediante GitHub Pages.
 
-## Uso local
+## Demo
 
-No requiere instalación ni backend. Abre `index.html` en un navegador o sirve la carpeta con cualquier servidor estático:
+
+## Características principales
+
+- 🔎 Búsqueda por nombre, categoría, modelo, variables o contenido.
+- 🗂️ Organización por comunicación, análisis, estudio, creación, datos y sistema.
+- 🧩 Personalización dinámica de variables mediante formularios.
+- 📋 Copia del prompt original o de la versión personalizada.
+- 🧠 Evaluación estructural mediante el marco R-C-T-F-R-E.
+- 📥 Exportación de la biblioteca completa en formato CSV.
+- 📱 Interfaz responsive para ordenador, tablet y móvil.
+- 🚀 Aplicación estática preparada para GitHub Pages.
+
+## Cómo utilizar PromptMaster
+
+### 1. Explora la biblioteca
+
+Cada tarjeta muestra el nombre de la plantilla, categoría, modelo recomendado, versión y ejemplo de uso.
+
+### 2. Busca una plantilla
+
+Utiliza el buscador o las pestañas de categorías para localizar prompts por nombre, temática, modelo, variables o contenido.
+
+### 3. Personaliza un prompt
+
+Selecciona **Usar plantilla**. PromptMaster detectará las variables entre corchetes, como `[NOMBRE_CLIENTE]`, `[TEMA_DEL_PROYECTO]` o `[PÚBLICO_OBJETIVO]`, y generará un formulario para completarlas. La vista previa se actualiza automáticamente.
+
+### 4. Copia el resultado
+
+Puedes copiar el prompt personalizado, listo para utilizar, o la plantilla original con sus variables para reutilizarla posteriormente.
+
+### 5. Evalúa la estructura de un prompt
+
+El evaluador utiliza el marco R-C-T-F-R-E:
+
+| Criterio | Qué analiza |
+| --- | --- |
+| Rol | Identidad, experiencia y perspectiva del modelo. |
+| Contexto | Antecedentes necesarios para resolver la tarea. |
+| Tarea | Claridad y precisión de la instrucción. |
+| Formato | Estructura esperada de la respuesta. |
+| Restricciones | Límites y condiciones. |
+| Ejemplos | Referencias de entrada y salida. |
+
+### 6. Exporta la biblioteca
+
+Pulsa **Exportar CSV** para descargar las plantillas y utilizarlas en Excel, Google Sheets u otras herramientas.
+
+## Ejecución local
+
+PromptMaster no requiere backend ni instalación de paquetes. Puedes abrir `index.html` directamente o ejecutar:
 
 ```bash
 python -m http.server 8000
 ```
 
-Después visita `http://localhost:8000`.
+Después visita `http://localhost:8000`. También puedes utilizar la extensión **Live Server** de Visual Studio Code.
 
-## Estructura
+## Tecnologías
+
+HTML5 · CSS3 · JavaScript Vanilla · CSV · GitHub Pages · Font Awesome · Google Fonts
+
+## Estructura del proyecto
 
 ```text
+prompt-master/
+├── .github/              # Plantillas de issues y GitHub Actions
+├── app.js                # Lógica de la aplicación
+├── biblioteca_prompts.csv # Datos exportables
+├── CONTRIBUTING.md
 ├── index.html
-├── styles.css
-├── app.js
-├── biblioteca_prompts.csv
-├── ENTREGA_BIBLIOTECA_PROMPTS.md
 ├── LICENSE
-└── .gitignore
+├── PROMPTS.md            # Documentación de prompts
+├── README.md
+├── SECURITY.md
+└── styles.css
 ```
 
-## Principios de uso
+## Publicación en GitHub Pages
 
-Los prompts son plantillas editables, no garantías de resultados. Revisa siempre las respuestas del modelo, especialmente en ámbitos legales, médicos, financieros o con datos sensibles. No introduzcas información confidencial en servicios de IA sin autorización.
+1. Abre **Settings** en el repositorio.
+2. Entra en **Pages**.
+3. Selecciona **Deploy from a branch**.
+4. Elige la rama `main` y la carpeta `/root`.
+5. Pulsa **Save**.
 
-## Publicar en GitHub Pages
 
-1. Crea un repositorio en GitHub.
-2. Sube el contenido de esta carpeta.
-3. En **Settings → Pages**, selecciona la rama principal y la carpeta raíz.
-4. Guarda los cambios y espera a que GitHub genere la URL pública.
+## Contribuir
+
+Las contribuciones son bienvenidas. Para añadir o mejorar un prompt, crea una rama descriptiva, documenta el caso de uso, define las variables y el formato de salida, comprueba la aplicación y abre un Pull Request.
+
+Consulta [CONTRIBUTING.md](CONTRIBUTING.md) para más información.
+
+## Seguridad y privacidad
+
+La aplicación no envía datos a un servidor propio. No introduzcas contraseñas, claves API, datos personales, información médica, financiera o confidencial en prompts que vayas a enviar a servicios externos de IA.
+
+Consulta [SECURITY.md](SECURITY.md) para más recomendaciones.
 
 ## Licencia
 
-Distribuido bajo licencia MIT. Consulta `LICENSE`.
+Este proyecto se distribuye bajo la licencia MIT. Consulta [LICENSE](LICENSE) para conocer los términos completos.
+
+## Autor
+
+Desarrollado por **TU_NOMBRE** como proyecto de portfolio enfocado en inteligencia artificial aplicada, diseño de prompts y desarrollo web frontend.
+
+- GitHub: [@Punysh6r]
+- LinkedIn: [https://www.linkedin.com/in/manuel-mart%C3%ADn-gonz%C3%A1lez-548532273/?locale=es]
+- Portfolio: [Punysh3r.com]
+
+Si PromptMaster te resulta útil, considera darle una ⭐ al repositorio.
