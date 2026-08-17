@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptMaster | Biblioteca de prompts</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-brain-circuit"></i>
+            <div>
+                <h1>PromptMaster</h1>
+                <p>Biblioteca interactiva de prompts parametrizados</p>
+            </div>
+        </div>
+        <div class="header-badges">
+            <span class="badge badge-trophy"><i class="fa-solid fa-trophy"></i> Prompt Master</span>
+            <span class="badge badge-quest"><i class="fa-solid fa-star"></i> Side Quest Activa</span>
+            <a href="ENTREGA_BIBLIOTECA_PROMPTS.md" class="btn btn-secondary" target="_blank">
+                <i class="fa-solid fa-file-markdown"></i> Ver Doc
+            </a>
+            <button id="exportCsvBtn" class="btn btn-primary">
+                <i class="fa-solid fa-download"></i> Exportar CSV
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Banner -->
+        <section class="hero-card">
+            <div class="hero-content">
+            <span class="tag">16 plantillas listas para adaptar</span>
+                <h2>Biblioteca de Prompts Estratégicos con Variables <code>[VARIABLES]</code></h2>
+                <p>Organizada según las 6 categorías recomendadas + Evaluador Permanente R-C-T-F-R-E (1-10).</p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <span class="stat-num" id="totalPromptsCount">16</span>
+                    <span class="stat-label">Prompts Totales</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">6</span>
+                    <span class="stat-label">Categorías</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Campos Rellenos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Side Quest Feature Banner -->
+        <section class="side-quest-card">
+            <div class="side-quest-header">
+                <div class="badge-sidequest"><i class="fa-solid fa-bolt"></i> SIDE QUEST INCLUIDA</div>
+                <h3>Evaluador de Prompts Permanente R-C-T-F-R-E (Puntuación 1-10)</h3>
+            </div>
+            <p>Utiliza este prompt de sistema para auditar cualquier prompt de tu biblioteca evaluando <strong>Rol, Contexto, Tarea, Formato, Restricciones y Ejemplos</strong>.</p>
+            <div class="side-quest-actions">
+                <button class="btn btn-glow" id="openEvaluatorBtn">
+                    <i class="fa-solid fa-calculator"></i> Probar Evaluador R-C-T-F-R-E
+                </button>
+            </div>
+        </section>
+
+        <!-- Search & Filter Controls -->
+        <section class="controls-section">
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Buscar por nombre, prompt, variables, modelo o palabra clave...">
+            </div>
+
+            <div class="category-tabs" id="categoryTabs">
+                <button class="tab-btn active" data-category="ALL">
+                    <i class="fa-solid fa-border-all"></i> Todas (<span id="count-ALL">16</span>)
+                </button>
+                <button class="tab-btn" data-category="Comunicación">
+                    <i class="fa-solid fa-paper-plane"></i> Comunicación (<span id="count-Comunicación">3</span>)
+                </button>
+                <button class="tab-btn" data-category="Análisis">
+                    <i class="fa-solid fa-chart-pie"></i> Análisis (<span id="count-Análisis">3</span>)
+                </button>
+                <button class="tab-btn" data-category="Estudio">
+                    <i class="fa-solid fa-graduation-cap"></i> Estudio (<span id="count-Estudio">3</span>)
+                </button>
+                <button class="tab-btn" data-category="Creación">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Creación (<span id="count-Creación">3</span>)
+                </button>
+                <button class="tab-btn" data-category="Datos">
+                    <i class="fa-solid fa-database"></i> Datos (<span id="count-Datos">2</span>)
+                </button>
+                <button class="tab-btn" data-category="Sistema">
+                    <i class="fa-solid fa-gears"></i> Sistema (<span id="count-Sistema">2</span>)
+                </button>
+            </div>
+        </section>
+
+        <!-- Prompt Cards Grid -->
+        <section class="prompts-grid" id="promptsGrid">
+            <!-- Cards populated dynamically via JS -->
+        </section>
+    </main>
+
+    <!-- Modal for Filling Variables -->
+    <div class="modal-overlay" id="variableModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-tag" id="modalCategory">Comunicación</span>
+                    <h3 id="modalTitle">Completar Variables del Prompt</h3>
+                </div>
+                <button class="modal-close" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">Introduce el valor para cada variable entre corchetes para generar el prompt final listo para usar:</p>
+                <div class="variables-form" id="variablesForm">
+                    <!-- Form fields generated dynamically -->
+                </div>
+                <div class="preview-box">
+                    <label><i class="fa-solid fa-terminal"></i> Vista Previa del Prompt Resultante:</label>
+                    <textarea id="resultPromptText" readonly></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="copyFinalBtn">
+                    <i class="fa-solid fa-copy"></i> Copiar Prompt Personalizado
+                </button>
+                <button class="btn btn-primary" id="copyOriginalBtn">
+                    <i class="fa-solid fa-code"></i> Copiar Con [VARIABLES]
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i> <span id="toastMessage">Prompt copiado al portapapeles</span>
+    </div>
+
+    <footer class="footer">
+            <p><strong>PromptMaster</strong> · Biblioteca abierta de prompts</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
